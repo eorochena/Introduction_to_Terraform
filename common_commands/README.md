@@ -2,19 +2,19 @@
 
 ## terraform init
 
-Command used to initialize a terraform project, this command downloads the specified cloud provider as well; [**More Information**][https://www.terraform.io/docs/cli/commands/init.html]
+Command used to initialize a terraform project, this command downloads the specified cloud provider as well; [**More Information**](https://www.terraform.io/docs/cli/commands/init.html)
 
 ## terraform fmt
 
-Command used to rewrite configuration files. [**More Information**][https://www.terraform.io/docs/cli/commands/fmt.html]
+Command used to rewrite configuration files. [**More Information**](https://www.terraform.io/docs/cli/commands/fmt.html)
 
 ## terraform validate
 
-Command used to validate terraform configuration files. [**More Information**][https://www.terraform.io/docs/cli/commands/validate.html]
+Command used to validate terraform configuration files. [**More Information**](https://www.terraform.io/docs/cli/commands/validate.html)
 
 ## terraform plan
 
-Command used to create execution plan. [**More Information**][https://www.terraform.io/docs/cli/commands/plan.html]
+Command used to create execution plan. [**More Information**](https://www.terraform.io/docs/cli/commands/plan.html)
 
 ## terraform apply
 
