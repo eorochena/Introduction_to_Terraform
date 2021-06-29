@@ -18,20 +18,20 @@ Command used to create execution plan. [**More Information**](https://www.terraf
 
 ## terraform apply
 
-Command that executes actions delineated on *terraform plan* [**More Information**][https://www.terraform.io/docs/cli/commands/apply.html]
+Command that executes actions delineated on *terraform plan* [**More Information**](https://www.terraform.io/docs/cli/commands/apply.html)
 
 ## terraform destroy
 
-Command used to destroy resources created and managed by a terraform configuration. [**More Information**][https://www.terraform.io/docs/cli/commands/destroy.html]
+Command used to destroy resources created and managed by a terraform configuration. [**More Information**](https://www.terraform.io/docs/cli/commands/destroy.html)
 
 ## terraform show
 
-Command that provides output from a state of plan file. [**More Information**][https://www.terraform.io/docs/cli/commands/show.html]
+Command that provides output from a state of plan file. [**More Information**](https://www.terraform.io/docs/cli/commands/show.html)
 
 ## terraform graph
 
-Command used to generate a visual representation of the terraform execution plan. [**More Information**][https://www.terraform.io/docs/cli/commands/graph.html]
+Command used to generate a visual representation of the terraform execution plan. [**More Information**](https://www.terraform.io/docs/cli/commands/graph.html)
 
 ## terraform output
 
-Command used to get values from the state file. [**More Information**][https://www.terraform.io/docs/cli/commands/output.html]
+Command used to get values from the state file. [**More Information**](https://www.terraform.io/docs/cli/commands/output.html)
