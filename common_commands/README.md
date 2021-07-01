@@ -2,7 +2,7 @@
 
 ## terraform init
 
-Command used to initialize a terraform project, this command downloads the specified cloud provider as well; [**More Information**](https://www.terraform.io/docs/cli/commands/init.html)
+Command used to initialize a terraform project, this command downloads the specified cloud provider as well. [**More Information**](https://www.terraform.io/docs/cli/commands/init.html)
 
 ## terraform fmt
 
@@ -18,7 +18,7 @@ Command used to create execution plan. [**More Information**](https://www.terraf
 
 ## terraform apply
 
-Command that executes actions delineated on *terraform plan* [**More Information**](https://www.terraform.io/docs/cli/commands/apply.html)
+Command that executes actions delineated on *terraform plan*. [**More Information**](https://www.terraform.io/docs/cli/commands/apply.html)
 
 ## terraform destroy
 
