@@ -1,6 +1,7 @@
 # Exercise 1
 
-Deploy a single Virtual Machine environment.
+For this exercise we will deploy a resource group, a virtual network, a network security group and a single virtual machine..
+
 
 Command           |  Effect
 ------------------|------------------------
