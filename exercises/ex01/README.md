@@ -1,6 +1,6 @@
 # Exercise 1
 
-For this exercise we will deploy a resource group, a virtual network, a network security group and a single virtual machine..
+For this exercise we will deploy a resource group, a virtual network, a network security group and a single virtual machine.
 
 
 Command           |  Effect
