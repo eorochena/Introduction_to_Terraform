@@ -1,37 +1,48 @@
 #################################
-# Virtual Machine Configuration #
+# Virtual Machine Scale Set     #
 #################################
 
-resource "azurerm_linux_virtual_machine" "vm" {
-  count                           = var.numVMs
-  name                            = "${var.resource_group}-vm-${count.index}"
-  resource_group_name             = azurerm_resource_group.rg.name
-  location                        = azurerm_resource_group.rg.location
-  network_interface_ids           = [azurerm_network_interface.network_if[count.index].id]
-  size                            = var.labels["environment"] == "production" ? var.vmSize["medium"] : var.vmSize["small"]
-  admin_username                  = var.username[0]
-  disable_password_authentication = true
-  proximity_placement_group_id    = azurerm_proximity_placement_group.proximity-placement-group.id
-  tags                            = local.required_tags
+resource "azurerm_virtual_machine_scale_set" "vmss" {
+  name                 = "${var.resource_group}-vmss"
+  resource_group_name  = azurerm_resource_group.rg.name
+  location             = azurerm_resource_group.rg.location
+  upgrade_policy_mode  = "Manual"
+  automatic_os_upgrade = false
+  tags                 = local.required_tags
 
-  os_disk {
-    name                 = "${var.resource_group}-disk-${count.index}"
-    caching              = "ReadWrite"
-    storage_account_type = var.storageAccType
-    disk_size_gb         = var.diskSize
+  sku {
+    name     = var.labels["environment"] == "production" ? var.vmSize["medium"] : var.vmSize["small"]
+    tier     = "Standard"
+    capacity = var.numVMs
   }
 
-  source_image_reference {
+  os_profile {
+    computer_name_prefix = "vm-"
+    admin_username       = var.username[0]
+  }
+
+  os_profile_linux_config {
+    disable_password_authentication = true
+    ssh_keys {
+      path     = "/your-casa/user-account/.ssh/authorized_keys"
+      key_data = file("~/.ssh/id_rsa.pub")
+    }
+  }
+
+  storage_profile_os_disk {
+    name              = ""
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+    managed_disk_type = "Standard_LRS"
+  }
+
+  storage_profile_image_reference {
     publisher = var.publisher
     offer     = "UbuntuServer"
     sku       = "18.04-LTS"
     version   = "latest"
   }
 
-  admin_ssh_key {
-    username   = var.username[0]
-    public_key = file("~/.ssh/id_rsa.pub")
-  }
 
   connection {
     user        = var.username[0]

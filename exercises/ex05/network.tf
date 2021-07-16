@@ -24,18 +24,4 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method   = "Static"
 }
 
-resource "azurerm_network_interface" "network_if" {
-  count                         = var.numVMs
-  name                          = "${var.resource_group}-if-${count.index}"
-  resource_group_name           = azurerm_resource_group.rg.name
-  location                      = azurerm_resource_group.rg.location
-  enable_accelerated_networking = var.acc_net
-
-  ip_configuration {
-    name                          = "${var.resource_group}-ip-conf"
-    subnet_id                     = azurerm_subnet.subnet.id
-    private_ip_address_allocation = "dynamic"
-    public_ip_address_id          = azurerm_public_ip.public_ip[count.index].id
-  }
-}
 
