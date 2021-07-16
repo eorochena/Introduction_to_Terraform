@@ -15,7 +15,7 @@ terraform {
 # Provider #
 ############
 
-provider "azurerm" { 
+provider "azurerm" {
   features {}
 }
 
@@ -33,63 +33,63 @@ resource "azurerm_resource_group" "rg" {
 #########################
 
 resource "azurerm_virtual_network" "vnet" {
-  name = "eduardo-vnet"
+  name                = "eduardo-vnet"
   resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
-  address_space = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.rg.location
+  address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
-  name = "eduardo-subnet"
-  resource_group_name = azurerm_resource_group.rg.name
+  name                 = "eduardo-subnet"
+  resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes = ["10.0.0.0/24"]
+  address_prefixes     = ["10.0.0.0/24"]
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  name = "eduardo-public-ip"
+  name                = "eduardo-public-ip"
   resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
-  allocation_method = "Static"
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "network_if" {
-  name = "eduardo-if"
+  name                = "eduardo-if"
   resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
- 
+  location            = azurerm_resource_group.rg.location
+
   ip_configuration {
-    name = "eduardo-ip-conf"
-    subnet_id = azurerm_subnet.subnet.id
+    name                          = "eduardo-ip-conf"
+    subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "dynamic"
-    public_ip_address_id = azurerm_public_ip.public_ip.id
+    public_ip_address_id          = azurerm_public_ip.public_ip.id
   }
-} 
-  
+}
+
 ##########################
 # Security Configuration #
 ##########################
 
 resource "azurerm_network_security_group" "nsg" {
-  name = "eduardo-nsg"
+  name                = "eduardo-nsg"
   resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
- 
+  location            = azurerm_resource_group.rg.location
+
   security_rule {
-    name = "SSH"
-    priority = 1001
-    direction = "Inbound"
-    access = "Allow"
-    protocol = "Tcp"
-    source_port_range = "*"
-    destination_port_range = "22"
-    source_address_prefix = "<your-ip-address>"
+    name                       = "SSH"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "<your-ip-address>"
     destination_address_prefix = "*"
   }
 }
 
 resource "azurerm_network_interface_security_group_association" "sec_group" {
-  network_interface_id = azurerm_network_interface.network_if.id
+  network_interface_id      = azurerm_network_interface.network_if.id
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
@@ -98,36 +98,36 @@ resource "azurerm_network_interface_security_group_association" "sec_group" {
 #################################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name = "eduardo-vm"
-  resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
-  network_interface_ids = [azurerm_network_interface.network_if.id]
-  size = "Standard_L8s_v2"
-  admin_username = "azureuser"
+  name                            = "eduardo-vm"
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = azurerm_resource_group.rg.location
+  network_interface_ids           = [azurerm_network_interface.network_if.id]
+  size                            = "Standard_L8s_v2"
+  admin_username                  = "azureuser"
   disable_password_authentication = true
 
   os_disk {
-    name = "eduardo-disk"
-    caching = "ReadWrite"
+    name                 = "eduardo-disk"
+    caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
   }
 
   source_image_reference {
     publisher = "Canonical"
-    offer = "UbuntuServer"
-    sku = "18.04-LTS"
-    version = "latest"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
   }
 
   admin_ssh_key {
-    username = "azureuser"
+    username   = "azureuser"
     public_key = file("~/.ssh/id_rsa.pub")
   }
 
   connection {
-    user = "azureuser"
-    host = azurerm_public_ip.public_ip.ip_address
+    user        = "azureuser"
+    host        = azurerm_public_ip.public_ip.ip_address
     private_key = file("~/.ssh/id_rsa")
   }
 }
-  
+
