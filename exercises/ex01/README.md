@@ -4,9 +4,9 @@ For this exercise we will deploy a resource group, a virtual network, a network 
 
 
 Command           |  Effect
-------------------|------------------------
-terraform init    | Initialize workplace
-terraform fmt     | Rewrite conf files
-terraform plan    | Create execution plan
-terraform apply   | Deploy execution plan
+------------------|-------------------------------
+terraform init    | Initializes workplace
+terraform fmt     | Rewrites configuration files
+terraform plan    | Creates execution plan
+terraform apply   | Deploys execution plan
 
