@@ -123,11 +123,5 @@ resource "azurerm_linux_virtual_machine" "vm" {
     username   = "azureuser"
     public_key = file("~/.ssh/id_rsa.pub")
   }
-
-  connection {
-    user        = "azureuser"
-    host        = azurerm_public_ip.public_ip.ip_address
-    private_key = file("~/.ssh/id_rsa")
-  }
 }
 
