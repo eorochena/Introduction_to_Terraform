@@ -1,6 +1,6 @@
 # Exercise 3
 
-For this exercise we will same the terraform.tfstate file in a remote location.
+For this exercise we will save the terraform.tfstate file in a remote location.
 
 
 Command           |  Effect
