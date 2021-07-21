@@ -17,8 +17,7 @@ resource "azurerm_subnet" "subnet" {
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  count               = var.numVMs
-  name                = "${var.resource_group}-public-ip-${count.index}"
+  name                = "${var.resource_group}-public-ip"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"

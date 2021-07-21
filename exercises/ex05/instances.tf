@@ -43,10 +43,20 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
     version   = "latest"
   }
 
+  network_profile {
+    name    = "my-network-profile"
+    primary = true
+
+    ip_configuration {
+      name      = "my-ip-c onfiguration"
+      primary   = true
+      subnet_id = azurerm_subnet.subnet.id
+    }
+  }
 
   connection {
     user        = var.username[0]
-    host        = azurerm_public_ip.public_ip[count.index].ip_address
+    host        = azurerm_public_ip.public_ip.ip_address
     private_key = file("~/.ssh/id_rsa")
   }
 
