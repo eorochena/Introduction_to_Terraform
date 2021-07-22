@@ -4,10 +4,9 @@ For this exercise we will deploy a resource group, a virtual network, a network 
 azure proximity placement groups and terraform provisioners.
 
 
-Command           |  Effect
-------------------|-------------------------------
-terraform init    | Initializes workplace
-terraform fmt     | Rewrites configuration files
-terraform plan    | Creates execution plan
-terraform apply   | Deploys execution plan
-
+Command           |  Effect                       | Status
+------------------|-------------------------------|------------
+terraform init    | Initializes workplace         | Available
+terraform fmt     | Rewrites configuration files  | Available
+terraform plan    | Creates execution plan        | Available
+terraform apply   | Deploys execution plan        | Available
