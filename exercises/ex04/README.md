@@ -11,5 +11,5 @@ terraform plan    | Creates execution plan                           | Available
 terraform show    | Human readable format for plan or state file     | Available
 terraform graph   | Generates graphical represetation of plan file   | Available
 terraform apply   | Deploys execution plan                           | Available
-terraform refresh | Reads current state of remote instances          | Deprecated
+terraform refresh | Reads current state of remote instances          | <span style="color:red">Deprecated</span>
 
