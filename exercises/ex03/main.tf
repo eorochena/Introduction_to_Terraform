@@ -147,6 +147,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                            = var.labels["environment"] == "production" ? var.vmSize["medium"] : var.vmSize["small"]
   admin_username                  = var.username[0]
   disable_password_authentication = true
+  encryption_at_host_enabled      = true
   proximity_placement_group_id    = azurerm_proximity_placement_group.proximity-placement-group.id
   tags                            = local.required_tags
 

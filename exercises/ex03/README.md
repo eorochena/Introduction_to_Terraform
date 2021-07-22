@@ -1,6 +1,6 @@
 # Exercise 3
 
-For this exercise we will save the terraform.tfstate file in a remote location.
+For this exercise we will save the terraform.tfstate file in a remote location and we will add encryption at the host level..
 
 
 Command           |  Effect                                          | Status 
