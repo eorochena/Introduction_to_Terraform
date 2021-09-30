@@ -32,8 +32,8 @@ data "http" "ip_address" {
 ##################
 
 resource "azurerm_resource_group" "rg" {
-  name     = "eduardo-rg"
-  location = "eastus2"
+  name     = "exercise-1"
+  location = "eastus"
 }
 
 #########################
@@ -41,33 +41,33 @@ resource "azurerm_resource_group" "rg" {
 #########################
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "eduardo-vnet"
+  name                = "exercise-1-vnet"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "eduardo-subnet"
+  name                 = "exercise-1-subnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.0.0/24"]
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  name                = "eduardo-public-ip"
+  name                = "exercise-1-public-ip"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "network_if" {
-  name                = "eduardo-if"
+  name                = "exercise-1-if"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
   ip_configuration {
-    name                          = "eduardo-ip-conf"
+    name                          = "exercise-1-ip-conf"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "dynamic"
     public_ip_address_id          = azurerm_public_ip.public_ip.id
@@ -79,7 +79,7 @@ resource "azurerm_network_interface" "network_if" {
 ##########################
 
 resource "azurerm_network_security_group" "nsg" {
-  name                = "eduardo-nsg"
+  name                = "exercise-1-nsg"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
@@ -96,7 +96,7 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "sec_group" {
+resource "azurerm_network_interface_security_group_association" "sec_group_assoc" {
   network_interface_id      = azurerm_network_interface.network_if.id
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
@@ -106,16 +106,16 @@ resource "azurerm_network_interface_security_group_association" "sec_group" {
 #################################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                            = "eduardo-vm"
+  name                            = "exercise-1-vm"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   network_interface_ids           = [azurerm_network_interface.network_if.id]
-  size                            = "Standard_L8s_v2"
+  size                            = "Standard_D2_v3"
   admin_username                  = "azureuser"
   disable_password_authentication = true
 
   os_disk {
-    name                 = "eduardo-disk"
+    name                 = "exercise-1-disk"
     caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
   }
