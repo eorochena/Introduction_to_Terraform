@@ -41,31 +41,31 @@ Terraform validate, validates the terraform template files, basically checks for
 
 ## Slide 6
 
-###Terraform fmt
+### Terraform fmt
 
 Formats terraform template files, basically adjusts spacing and indentation.
 
 ## Slide 7
 
-###Terraform plan
+### Terraform plan
 
 Terraform plan creates the execution plan; it lays out the actions to perform during the resource creation.
 
 ## Slide 8
 
-###Terraform apply
+### Terraform apply
 
 Applies or executes the actions described on the terraform plan. Some tasks will be done in parallel while others sequentially.
 
 ## Slide 9
 
-###Terraform destroy
+### Terraform destroy
 
 Destroys the remote resources that are managed by terraform.
 
 ## Slide 10
 
-###Terraform State File
+### Terraform State File
 
 Terraform uses the state file to keep track of the status of the remote resources being managed by it. The default name of the state file is terraform.tfstate.
 
