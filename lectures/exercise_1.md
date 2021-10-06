@@ -1,7 +1,7 @@
 ## Exercise 1
 
 ### Providers
-Terraform providers are the plugins used to interact with the cloud providers through their specific API .
+Terraform providers are the plugins used to interact with the cloud providers through their specific API[^1].
 
 ### Data Sources (http)
 The HTTP data source is used to retrieve data from a URL via an HTTP GET request .
@@ -32,4 +32,6 @@ Virtual machines are virtualization or emulation of physical/bare metal compute 
 
 ### Outputs
 Terraform outputs return the value or output of a terraform module .
+
+[^1]: https://www.terraform.io/docs/language/providers/index.html 
 
