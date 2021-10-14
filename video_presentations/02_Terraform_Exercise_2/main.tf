@@ -6,7 +6,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 2.46.0"
+      version = "= 2.75.0"
     }
   }
 }
@@ -101,14 +101,14 @@ resource "azurerm_network_security_group" "nsg" {
   }
 
   security_rule {
-    name                       = "HTTP"
+    name                       = "HTTPS"
     priority                   = 1002
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "<your-ip-address>"
+    destination_port_range     = "443"
+    source_address_prefix      = chomp(data.http.ip_address.body)
     destination_address_prefix = "*"
   }
 }
@@ -137,12 +137,12 @@ resource "azurerm_linux_virtual_machine" "vm" {
   os_disk {
     name                 = "${var.resource_group}-disk-${count.index}"
     caching              = "ReadWrite"
-    storage_account_type = var.storageAccType
+    storage_account_type = var.storage_account_type
     disk_size_gb         = var.diskSize
   }
 
   source_image_reference {
-    publisher = var.publisher
+    publisher = "Canonical"
     offer     = "UbuntuServer"
     sku       = "18.04-LTS"
     version   = "latest"
@@ -170,5 +170,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
       "sudo mv /home/${var.username[0]}/index.html /var/www/html/",
     "sudo systemctl restart apache2"]
   }
+}
+
+output "public_ip_address" {
+  value = azurerm_public_ip.public_ip.*.ip_address
 }
 

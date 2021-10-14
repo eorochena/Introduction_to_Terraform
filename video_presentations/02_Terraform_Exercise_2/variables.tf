@@ -1,5 +1,5 @@
 variable "resource_group" {
-  description = "Resource group name"
+  description = "Resource Group Name"
   type        = string
 }
 
@@ -8,10 +8,9 @@ variable "region" {
   type        = string
 }
 
-variable "acc_net" {
-  description = "Azure accelerated network"
-  type        = bool
-  default     = true
+variable "numVMs" {
+  description = "number of virtual machines"
+  type        = number
 }
 
 variable "vmSize" {
@@ -19,28 +18,17 @@ variable "vmSize" {
   type        = map(any)
 }
 
-variable "storageAccType" {
-  description = "Storage account type"
-  type        = string
-}
-
-variable "publisher" {
-  description = "OS publisher"
-  type        = string
-}
-
-variable "numVMs" {
-  description = "Number of instances"
-  type        = number
-}
-
-variable "diskSize" {
-  description = "Disk size"
-  type        = number
-}
-
 variable "username" {
   description = "Admin user"
   type        = list(any)
 }
 
+variable "storage_account_type" {
+  description = "storage account type"
+  type        = list(any)
+}
+
+variable "diskSize" {
+  description = "storage size"
+  type        = number
+}
