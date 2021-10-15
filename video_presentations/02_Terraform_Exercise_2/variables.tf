@@ -23,6 +23,11 @@ variable "username" {
   type        = list(any)
 }
 
+variable "disable_password_authentication" {
+  description = "password authentication"
+  type        = bool
+}
+
 variable "storage_account_type" {
   description = "storage account type"
   type        = list(any)
