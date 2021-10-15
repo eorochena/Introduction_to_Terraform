@@ -36,7 +36,9 @@ The count object is used to create multiple resources of the same type[^5].
 Terraform provisioners can be used to perform specific actions or the remote virtual machines or even in the local system[^6]. The types of provisioners are:
 
 **File:** The file provisioner is used to copy data to the remote virtual machines[^7].
+
 **Remote-exec:** This file provisioner is used to execute commands or scripts or the remote system[^8].
+
 **Local-exec:** Used to execute commands or scripts on the local system[^9].
 
 
