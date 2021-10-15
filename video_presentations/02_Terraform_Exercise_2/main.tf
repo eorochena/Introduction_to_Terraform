@@ -131,7 +131,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids           = [azurerm_network_interface.network_if[count.index].id]
   size                            = var.vmSize["small"]
   admin_username                  = var.username[0]
-  disable_password_authentication = true
+  disable_password_authentication = var.disable_password_authentication
   proximity_placement_group_id    = azurerm_proximity_placement_group.proximity-placement-group.id
 
   os_disk {
