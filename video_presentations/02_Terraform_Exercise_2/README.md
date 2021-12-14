@@ -23,10 +23,6 @@ The terraform.tfvars file is used to set the values of the variables[^2].
 
 **Map:** Maps are used to store and retrieve data using a key = value pair relationship instead of the relative position of the stored objects.
 
-## Proximity Placement Groups
-
-Proximity placement groups are used to place virtual resources as closer together as feasible, usually the main objective is to reduce network latency[^4].
-
 ## Count 
 
 The count object is used to create multiple resources of the same type[^5].
