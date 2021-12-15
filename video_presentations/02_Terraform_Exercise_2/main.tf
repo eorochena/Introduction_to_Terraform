@@ -28,16 +28,6 @@ resource "azurerm_resource_group" "rg" {
   location = var.region
 }
 
-#############################
-# Proximity Placement Group #
-#############################
-
-resource "azurerm_proximity_placement_group" "proximity-placement-group" {
-  name                = "${var.resource_group}-proximity-placement-group"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-}
-
 #########################
 # Network Configuration #
 #########################
@@ -69,7 +59,6 @@ resource "azurerm_network_interface" "network_if" {
   name                          = "${var.resource_group}-if-${count.index}"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
-  enable_accelerated_networking = var.acc_net
 
   ip_configuration {
     name                          = "${var.resource_group}-ip-conf"
@@ -132,7 +121,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                            = var.vmSize["small"]
   admin_username                  = var.username[0]
   disable_password_authentication = var.disable_password_authentication
-  proximity_placement_group_id    = azurerm_proximity_placement_group.proximity-placement-group.id
 
   os_disk {
     name                 = "${var.resource_group}-disk-${count.index}"
