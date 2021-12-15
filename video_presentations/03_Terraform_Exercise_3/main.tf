@@ -6,7 +6,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 2.46.0"
+      version = "= 2.87.0"
     }
   }
 }
@@ -118,9 +118,8 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "sec_group" {
-  count                     = var.numVMs
-  network_interface_id      = azurerm_network_interface.network_if[count.index].id
+resource "azurerm_subnet_network_security_group_association" "sec_group" {
+  subnet_id                 = azurerm_subnet.subnet.id
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
