@@ -6,7 +6,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 2.87.0"
+      version = ">= 2.87.0"
     }
   }
 }
@@ -38,7 +38,7 @@ locals {
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group
-  location = var.region
+  location = var.location
 
   tags = local.required_tags
 }
@@ -101,7 +101,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "<your-ip-address>"
+    source_address_prefix      = chomp(data.http.ip_address.body)
     destination_address_prefix = "*"
   }
 
@@ -113,7 +113,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
-    source_address_prefix      = "<your-ip-address>"
+    source_address_prefix      = chomp(data.http.ip_address.body)
     destination_address_prefix = "*"
   }
 }

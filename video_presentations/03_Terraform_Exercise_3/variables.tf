@@ -8,7 +8,7 @@ variable "labels" {
   type        = map(any)
 }
 
-variable "region" {
+variable "location" {
   description = "Azure region"
   type        = string
 }
