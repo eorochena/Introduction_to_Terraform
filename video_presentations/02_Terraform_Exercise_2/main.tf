@@ -19,6 +19,14 @@ provider "azurerm" {
   features {}
 }
 
+#####################
+# Public IP Address #
+#####################
+
+data "http" "ip_address" {
+  url = "http://ipv4.icanhazip.com"
+}
+
 ##################
 # Resource Group #
 ##################

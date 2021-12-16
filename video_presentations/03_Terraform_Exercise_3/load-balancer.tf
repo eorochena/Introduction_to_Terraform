@@ -47,6 +47,6 @@ resource "azurerm_lb_probe" "lb_probe" {
   loadbalancer_id     = azurerm_lb.load_balancer.id
   name                = "http-health-check"
   port                = 80
-  interval_in_seconds = 3
-  number_of_probes    = 3
+  interval_in_seconds = 5
+  number_of_probes    = 5
 }
