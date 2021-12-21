@@ -183,16 +183,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
     private_key = file("~/.ssh/id_rsa")
   }
 
-  provisioner "file" {
-    source      = "files/index.html"
-    destination = "/home/${var.username[0]}/index.html"
-  }
-
   provisioner "remote-exec" {
     inline = ["sudo apt update",
       "sudo apt install apache2 -y",
-      "sudo mv /home/${var.username[0]}/index.html /var/www/html/",
-    "sudo systemctl restart apache2"]
+      "sudo echo \"<html><h1>My IP is $(curl -s http;//ipv4.icanhazip.com)</h1></html>\" > /var/www/html/index.html",
+      "sudo systemctl restart apache2"]
   }
 }
 
