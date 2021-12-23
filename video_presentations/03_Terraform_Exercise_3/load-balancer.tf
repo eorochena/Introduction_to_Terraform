@@ -3,11 +3,12 @@ resource "azurerm_public_ip" "load_balancer_public_ip" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
+  sku                 = "Standard"
 }
 
 resource "azurerm_lb" "load_balancer" {
   name                = "${var.resource_group}-load-balancer"
-  location            = var.location
+  location            = var.region
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
 
@@ -45,6 +46,8 @@ resource "azurerm_lb_probe" "lb_probe" {
   loadbalancer_id     = azurerm_lb.load_balancer.id
   name                = "http-health-check"
   port                = 80
+  protocol            = "Http"
+  request_path        = "/index.html"
   interval_in_seconds = 5
   number_of_probes    = 5
 }
