@@ -186,7 +186,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   provisioner "remote-exec" {
     inline = ["sudo apt update",
       "sudo apt install apache2 -y",
-      "sudo echo \"<html><h1>My IP is $(curl -s http;//ipv4.icanhazip.com)</h1></html>\" > /var/www/html/index.html",
+      "sudo echo \"<html><h1>My IP is $(curl -s http://ipv4.icanhazip.com)</h1></html>\" > /var/www/html/index.html",
     "sudo systemctl restart apache2"]
   }
 }
