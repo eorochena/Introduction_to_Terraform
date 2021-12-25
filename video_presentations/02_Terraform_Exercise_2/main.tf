@@ -133,7 +133,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   os_disk {
     name                 = "${var.resource_group}-disk-${count.index}"
     caching              = "ReadWrite"
-    storage_account_type = var.storage_account_type
+    storage_account_type = var.storage_account_type[0]
     disk_size_gb         = var.diskSize
   }
 
