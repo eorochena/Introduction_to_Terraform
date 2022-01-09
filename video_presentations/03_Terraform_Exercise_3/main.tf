@@ -152,7 +152,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   network_interface_ids           = [azurerm_network_interface.network_if[count.index].id]
-  size                            = var.labels["environment"] == "production" ? var.vmSize["medium"] : var.vmSize["small"]
+  size                            = var.vmSize["small"]
   admin_username                  = var.username[0]
   disable_password_authentication = true
   proximity_placement_group_id    = azurerm_proximity_placement_group.proximity-placement-group.id
