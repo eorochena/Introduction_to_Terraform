@@ -1,13 +1,11 @@
 resource "azurerm_storage_account" "remote_state_file" {
-  name                      = "${var.resource_group}-storage-account"
+  name                      = var.resource_group
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = azurerm_resource_group.rg.location
   account_tier              = "Standard"
   account_kind              = "StorageV2"
   allow_blob_public_access  = false
-  is_hns_enabled            = true
-  account_replication_type  = "LRS"
-  nfsv3_enabled             = true
+  account_replication_type  = var.labels["environment"] == "production" ? var.account_replication_type["global"] : var.account_replication_type["local"]
   min_tls_version           = "TLS1_2"
   enable_https_traffic_only = true
   tags                      = local.required_tags
