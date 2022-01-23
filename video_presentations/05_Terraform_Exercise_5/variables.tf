@@ -13,11 +13,6 @@ variable "subnets" {
   type        = map(any)
 }
 
-variable "availability" {
-  description = "availability sets"
-  type        = string
-}
-
 variable "acc_net" {
   description = "accelerated network"
   type        = bool

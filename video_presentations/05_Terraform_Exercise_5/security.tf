@@ -1,4 +1,5 @@
 resource "azurerm_network_security_group" "nsg" {
+  depends_on          = [azurerm_resource_group.rg]
   for_each            = var.resource_information
   name                = each.key
   resource_group_name = each.key

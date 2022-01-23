@@ -1,4 +1,5 @@
 resource "azurerm_virtual_network" "vnet" {
+  depends_on          = [azurerm_resource_group.rg]
   for_each            = var.resource_information
   name                = each.key
   location            = each.value
@@ -7,6 +8,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "subnet" {
+  depends_on           = [azurerm_resource_group.rg, azurerm_virtual_network.vnet]
   for_each             = var.resource_information
   name                 = each.key
   resource_group_name  = each.key
@@ -15,6 +17,7 @@ resource "azurerm_subnet" "subnet" {
 }
 
 resource "azurerm_public_ip" "public_ip" {
+  depends_on          = [azurerm_resource_group.rg]
   for_each            = var.resource_information
   name                = each.key
   resource_group_name = each.key
@@ -23,6 +26,7 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 resource "azurerm_network_interface" "network_interface" {
+  depends_on          = [azurerm_resource_group.rg]
   for_each            = var.resource_information
   name                = each.key
   resource_group_name = each.key
