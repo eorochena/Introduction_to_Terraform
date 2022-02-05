@@ -6,4 +6,8 @@ This repository contains the course material for the Introduction to Terraform C
 
 If you see any mistakes, please submit a pull request.
 
+The  README files under the terrafor-files  directory were created  using terraform-docs[^1]
+
 Thanks.
+
+[^1]: https://github.com/terraform-docs/terraform-docs
