@@ -4,7 +4,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   location                        = each.value
   resource_group_name             = each.key
   network_interface_ids           = [azurerm_network_interface.network_interface[each.key].id]
-  size                            = var.labels["environment"] == "production" ? var.vmSize["production"] : var.vmSize["development"]
+  size                            = var.labels["owner"] == "Bob" ? var.vmSize["production"] : var.vmSize["development"]
   admin_username                  = var.username[0]
   disable_password_authentication = true
 
