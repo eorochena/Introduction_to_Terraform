@@ -18,11 +18,12 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "security-group-association" {
-  for_each                  = var.resource_information
-  network_interface_id      = azurerm_network_interface.network_interface[each.key].id
+resource "azurerm_subnet_network_security_group_association" "sec_group" {
+  for_each = var.resource_information
+  subnet_id                 = azurerm_subnet.subnet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
+
 
 
 
