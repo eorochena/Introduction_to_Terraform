@@ -9,7 +9,8 @@ Availability sets are used as a way to improve the application availability by a
 ## for_each
 
 The ```for_each``` meta-argument offers similar functionality as ```count``` in the sense that allows you to create multiple virtual instances using one single resource block, 
-both methods are mutually exclusive[^2]. 
+both methods are mutually exclusive one key difference between ```count``` and ```for_each``` is the way they access their  values while ```for_each``` uses mapping to fetch them.
+```count```  relies on their order pretty much like a list[^2]. 
 
 ## depends_on
 
