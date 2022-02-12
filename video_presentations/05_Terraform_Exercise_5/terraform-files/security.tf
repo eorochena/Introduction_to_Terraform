@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "209.243.55.0/24"
+    source_address_prefix      = chomp(data.http.ip_address.body)
     destination_address_prefix = "*"
   }
 }
