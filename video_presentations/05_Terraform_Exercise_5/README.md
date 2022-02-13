@@ -12,9 +12,13 @@ The ```for_each``` meta-argument offers similar functionality as ```count``` in 
 both methods are mutually exclusive one key difference between ```count``` and ```for_each``` is the way they access their  values while ```for_each``` uses mapping to fetch them.
 ```count```  relies on their order pretty much like a list[^2]. 
 
+## for loop
+
+The ```for loop``` allows Terraform code to be executed repeatedly, and are used to itinerate over a sequence of objects like lists or maps[^3]. 
+
 ## depends_on
 
-The ```depends_on``` meta-argument is used to handle resource dependencies. By adding this to a resource block it will make terraform postpone its creation until the dependent resource(s) get created[^3].
+The ```depends_on``` meta-argument is used to handle resource dependencies. By adding this to a resource block it will make terraform postpone its creation until the dependent resource(s) get created[^4].
 
 
 Command           |  Effect                                          | Status
@@ -29,4 +33,5 @@ terraform refresh | Reads current state of remote instances          | Deprecate
 
 [^1]: https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview
 [^2]: https://www.terraform.io/language/meta-arguments/for_each
-[^3]: https://www.terraform.io/language/meta-arguments/depends_on
+[^3]: https://www.terraform.io/language/expressions/for
+[^4]: https://www.terraform.io/language/meta-arguments/depends_on
