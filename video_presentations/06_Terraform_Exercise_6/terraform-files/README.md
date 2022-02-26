@@ -30,4 +30,6 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_resource_group_names"></a> [resource\_group\_names](#output\_resource\_group\_names) | n/a |
