@@ -30,7 +30,7 @@ Removes trailing newline characters[^6].
 
 Skips or bypasses interactive approval process[^7].
 
-##  Additional material 
+### Additional material 
 
 - Count and for_each medium article by Jacek Kikiewicz -> https://medium.com/@business_99069/terraform-count-vs-for-each-b7ada2c0b186
 - Terraform for loop, for_each loop and count by Rahul Wagh -> https://www.youtube.com/watch?v=4qO7WK6D3cA&t=316s
