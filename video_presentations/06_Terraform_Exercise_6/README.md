@@ -36,6 +36,7 @@ Skips or bypasses interactive approval process[^7].
 - Terraform for loop, for_each loop and count by Rahul Wagh -> https://www.youtube.com/watch?v=4qO7WK6D3cA&t=316s
 
 
+
 Command           |  Effect                                          | Status
 ------------------|--------------------------------------------------|------------
 terraform init    | Initializes workplace                            | Available
