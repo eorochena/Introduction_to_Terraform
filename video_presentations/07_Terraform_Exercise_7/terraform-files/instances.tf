@@ -4,7 +4,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
   location                        = var.location
   resource_group_name             = var.resource_name
   network_interface_ids           = [azurerm_network_interface.network_interface[each.key].id]
-  encryption_at_host_enabled = true
   size                            = each.value
   admin_username                  = var.username[1]
   disable_password_authentication = true
