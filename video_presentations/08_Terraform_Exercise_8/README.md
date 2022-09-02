@@ -6,7 +6,7 @@ In this exercise we will cover terraform state file.
 
 By default Terraform stores the state of the infrastructure and configuration of the cloud resources on the ```terraform.tfstate``` file, this file can be stored locally or remotely[^1].
 
-## Terraform inport
+## Terraform import
 
 You can import resources into your state file by using the ```terraform import <resource.definition> <resource-id>```[^2].
 

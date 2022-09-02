@@ -1,4 +1,4 @@
-# Exercise 9
+# Exercise 10
 
 In this short video we will cover some of the terraform providers.
 
